@@ -1,43 +1,65 @@
+# chart.py
+# Customer Support Response Time Distribution
+# Author: 22f2001398@ds.study.iitm.ac.in
+
 import seaborn as sns
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 
-# Set random seed for reproducibility
+# -----------------------------
+# 1. Generate synthetic dataset
+# -----------------------------
 np.random.seed(42)
 
-# Set Seaborn style and context
+channels = ["Email", "Chat", "Phone", "Social Media"]
+data = []
+
+# Generate realistic response times (minutes) by channel
+for ch in channels:
+    if ch == "Email":
+        times = np.random.normal(loc=120, scale=30, size=200)  # slower
+    elif ch == "Chat":
+        times = np.random.normal(loc=10, scale=5, size=200)   # very fast
+    elif ch == "Phone":
+        times = np.random.normal(loc=30, scale=10, size=200)
+    else:  # Social Media
+        times = np.random.normal(loc=60, scale=20, size=200)
+    
+    df_temp = pd.DataFrame({
+        "Channel": ch,
+        "ResponseTime": times
+    })
+    data.append(df_temp)
+
+df = pd.concat(data, ignore_index=True)
+
+# Clip negative times
+df["ResponseTime"] = df["ResponseTime"].clip(lower=1)
+
+# -----------------------------
+# 2. Seaborn violinplot
+# -----------------------------
 sns.set_style("whitegrid")
 sns.set_context("talk")
 
-# Generate synthetic customer engagement data
-n_samples = 300
-data = pd.DataFrame({
-    "email_open_rate": np.clip(np.random.normal(0.5, 0.1, n_samples), 0, 1),
-    "click_through_rate": np.clip(np.random.normal(0.2, 0.05, n_samples), 0, 1),
-    "time_on_site": np.random.normal(120, 30, n_samples),  # in seconds
-    "pages_per_visit": np.random.normal(5, 1.5, n_samples),
-    "bounce_rate": np.clip(np.random.normal(0.4, 0.1, n_samples), 0, 1),
-    "conversion_rate": np.clip(np.random.normal(0.05, 0.02, n_samples), 0, 1),
-})
+plt.figure(figsize=(8, 8))  # ensures 512x512 when saved with dpi=64
 
-# Compute correlation matrix
-corr = data.corr()
-
-# Create figure and heatmap
-plt.figure(figsize=(8, 8))  # 8 inches * 64 dpi = 512 pixels
-heatmap = sns.heatmap(
-    corr,
-    annot=True,
-    fmt=".2f",
-    cmap="coolwarm",
-    square=True,
-    linewidths=0.5,
-    cbar_kws={"shrink": 0.8}
+ax = sns.violinplot(
+    data=df,
+    x="Channel",
+    y="ResponseTime",
+    palette="Set2",
+    cut=0
 )
 
-# Add title
-plt.title("Customer Engagement Correlation Matrix", fontsize=16)
+# Titles and labels
+ax.set_title("Customer Support Response Times by Channel", fontsize=16, weight="bold")
+ax.set_xlabel("Support Channel", fontsize=14)
+ax.set_ylabel("Response Time (minutes)", fontsize=14)
 
-# Save figure with required dimensions
-plt.savefig("chart.png", dpi=64, bbox_inches="tight")
+# -----------------------------
+# 3. Export chart
+# -----------------------------
+plt.savefig("chart.png", dpi=64, bbox_inches="tight")  # 512x512 px
+plt.close()
