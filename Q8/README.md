@@ -1,6 +1,7 @@
 # Healthcare Performance Analysis — Patient Satisfaction (2024 Q1–Q4)
 
 **Contact / Verification:** 22f2001398@ds.study.iitm.ac.in
+**Contact / Verification:** 22f2001398@ds.study.iitm.ac.in
 
 ## Overview
 The executive team is concerned about patient satisfaction. We analyzed the 2024 quarterly patient satisfaction scores to understand trend, compare against industry benchmarks, and recommend concrete actions to reach the target score.
@@ -11,6 +12,7 @@ The executive team is concerned about patient satisfaction. We analyzed the 2024
 - Q3: 7.30  
 - Q4: 5.11  
 
+**Computed average (2024): 4.61**
 **Computed average (2024): 4.61**
 
 **Industry target:** 4.5
