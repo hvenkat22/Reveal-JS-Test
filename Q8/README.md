@@ -15,6 +15,8 @@ The executive team is concerned about patient satisfaction. We analyzed the 2024
 **Computed average (2024): 4.61**
 **Computed average (2024): 4.61**
 
+The solution: "improve service quality and wait times"
+
 **Industry target:** 4.5
 
 ---
