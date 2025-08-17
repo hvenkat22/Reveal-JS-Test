@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Q3 Earnings – Interactive RevealJS Deck</title>
+  <meta name="description" content="Quarterly earnings interactive presentation using RevealJS with markdown, fragments, code, math, and notes." />
+
+  <!-- RevealJS core & theme (via CDN) -->
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@5/dist/reveal.css" />
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@5/dist/theme/black.css" id="theme" />
+
+  <!-- Optional: a light code theme from highlight.js (loaded by the plugin) -->
+  <style>
+    /* Simple brand accents */
+    .reveal h1, .reveal h2, .reveal h3 { letter-spacing: 0.02em; }
+    .reveal section img { border-radius: 16px; box-shadow: 0 8px 30px rgba(0,0,0,.35); }
+    .reveal .brand { font-weight: 600; opacity: .85; }
+    .reveal .email { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: .8em; opacity: .85; }
+    .reveal .pill { display:inline-block; padding:.25em .6em; border-radius:9999px; background:#1f2937; font-size:.6em; vertical-align:middle; }
+    .reveal .two-col { display:grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items:center; }
+    @media (max-width: 1200px){ .reveal .two-col { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- Title Slide -->
+      <section data-auto-animate>
+        <h1>Quarterly Earnings Report</h1>
+        <h3 class="brand">Major Financial Institution</h3>
+        <p class="email">Contact: 22f2001398@ds.study.iitm.ac.in</p>
+        <p>
+          <span class="pill fragment">Interactive</span>
+          <span class="pill fragment">Data‑Driven</span>
+          <span class="pill fragment">Presenter Notes</span>
+        </p>
+        <aside class="notes">
+          Welcome! Open speaker notes with the <b>S</b> key.
+          Today we'll cover KPIs, growth drivers, risk, and guidance. Call out the
+          interactive elements: fragments, code, markdown, and math.
+        </aside>
+      </section>
+
+      <!-- Agenda with fragments (animated elements) -->
+      <section>
+        <h2>Agenda</h2>
+        <ul>
+          <li class="fragment">Headline KPIs</li>
+          <li class="fragment">Revenue & Margin Drivers</li>
+          <li class="fragment">Risk & Liquidity</li>
+          <li class="fragment">Guidance & Outlook</li>
+          <li class="fragment">Q&A</li>
+        </ul>
+        <aside class="notes">
+          Use fragments to reveal points one by one to keep focus.
+        </aside>
+      </section>
+
+      <!-- Markdown slide (at least one) -->
+      <section data-markdown>
+        <textarea data-template>
+### Headline KPIs _(Markdown)_
+
+- **Revenue:** $12.4B _(↑ 8.3% YoY)_
+- **Operating Margin:** 27.2%
+- **EPS (Diluted):** $3.46
+- **CET1 Ratio:** 13.4%
+
+> Markdown lets analysts tweak content quickly without touching HTML.
+
+Notes:
+- Mention drivers: NIM expansion, trading, fee income.
+        </textarea>
+      </section>
+
+      <!-- Two-column layout with auto-animate between slides -->
+      <section data-auto-animate>
+        <div class="two-col">
+          <div>
+            <h2 data-id="h">Revenue Mix</h2>
+            <ul>
+              <li>Net Interest Income</li>
+              <li>Trading & Markets</li>
+              <li>Wealth & Asset Mgmt</li>
+              <li>Payments & Cards</li>
+            </ul>
+          </div>
+          <div>
+            <pre><code class="language-js" data-trim data-noescape>
+// Simple mix (illustrative)
+const revenue = {
+  netInterest: 6.2,
+  markets: 3.1,
+  wealth: 2.0,
+  payments: 1.1,
+};
+const total = Object.values(revenue).reduce((a,b)=>a+b,0);
+console.log(`Total: $${total}B`);
+            </code></pre>
+          </div>
+        </div>
+        <aside class="notes">
+          Call out the code sample and syntax highlighting. Mention how this
+          snippet could drive a live chart in a real demo.
+        </aside>
+      </section>
+
+      <!-- Code Samples with syntax highlighting (another example) -->
+      <section>
+        <h2>Code Sample: Simple Growth Calc</h2>
+        <pre><code class="language-python" data-line-numbers data-trim>
+# year-over-year growth (illustrative)
+def yoy(curr, prev):
+    return (curr - prev) / prev * 100.0
+
+print(f"YoY: {yoy(12.4, 11.45):.1f}%")
+        </code></pre>
+        <aside class="notes">
+          Showcase cross-language code samples—use line numbers to guide the narrative.
+        </aside>
+      </section>
+
+      <!-- Math / Financial formulas -->
+      <section>
+        <h2>Financial Formulas</h2>
+        <p>Net Present Value (discrete):</p>
+        <p>$$\displaystyle NPV = \sum_{t=1}^{T} \frac{CF_t}{(1+r)^t} - C_0$$</p>
+        <p>Capital Asset Pricing Model (CAPM):</p>
+        <p>$$\displaystyle E[R_i] = R_f + \beta_i\,(E[R_m]-R_f)$$</p>
+        <p class="fragment">Leverage Ratio: $$\;\; LR = \frac{Tier\,1\,Capital}{Total\,Exposure}$$</p>
+        <aside class="notes">
+          Explain how assumptions for r, beta, and cash flows affect valuation and risk.
+        </aside>
+      </section>
+
+      <!-- Guidance slide with fragments -->
+      <section>
+        <h2>Guidance & Outlook</h2>
+        <ol>
+          <li class="fragment fade-up">FY Revenue: $48–49B</li>
+          <li class="fragment fade-up">Opex discipline: +2% to +3%</li>
+          <li class="fragment fade-up">Buybacks subject to CCAR</li>
+          <li class="fragment fade-up">CET1 target: &gt; 12.5%</li>
+        </ol>
+        <aside class="notes">
+          Use fragment animations to stage key guidance points.
+        </aside>
+      </section>
+
+      <!-- Closing / Contact -->
+      <section>
+        <h2>Thank You</h2>
+        <p>Follow‑ups & datasets: <span class="email">22f2001398@ds.study.iitm.ac.in</span></p>
+        <p class="fragment">Press <kbd>S</kbd> for speaker notes during the talk.</p>
+        <aside class="notes">
+          Invite Q&A. Remind stakeholders that a GitHub Pages link will be shared.
+        </aside>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- RevealJS scripts & plugins -->
+  <script src="https://unpkg.com/reveal.js@5/dist/reveal.js"></script>
+  <script src="https://unpkg.com/reveal.js@5/plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@5/plugin/markdown/markdown.js"></script>
+  <script src="https://unpkg.com/reveal.js@5/plugin/highlight/highlight.js"></script>
+  <script src="https://unpkg.com/reveal.js@5/plugin/math/math.js"></script>
+
+  <script>
+    Reveal.initialize({
+      hash: true,
+      slideNumber: true,
+      controls: true,
+      progress: true,
+      center: true,
+      autoAnimate: true,
+      transition: 'fade',
+      plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ],
+      // Math plugin config (KaTeX)
+      math: {
+        // KaTeX is pulled automatically by the plugin if not present
+        // You can customize macros here if needed
+        // e.g., macros: { "\\RR": "\\mathbb{R}" }
+      },
+      // Code highlighting
+      highlight: {
+        // use highlight.js default theme; can swap to 'github' by adding the CSS
+      }
+    });
+  </script>
+</body>
+</html>
