@@ -9,6 +9,8 @@
   <!-- RevealJS core & theme (via CDN) -->
   <link rel="stylesheet" href="https://unpkg.com/reveal.js@5/dist/reveal.css" />
   <link rel="stylesheet" href="https://unpkg.com/reveal.js@5/dist/theme/black.css" id="theme" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
 
   <!-- Optional: a light code theme from highlight.js (loaded by the plugin) -->
   <style>
@@ -125,16 +127,22 @@ print(f"YoY: {yoy(12.4, 11.45):.1f}%")
 
       <!-- Math / Financial formulas -->
       <section>
-        <h2>Financial Formulas</h2>
-        <p>Net Present Value (discrete):</p>
-        <p>$$\displaystyle NPV = \sum_{t=1}^{T} \frac{CF_t}{(1+r)^t} - C_0$$</p>
-        <p>Capital Asset Pricing Model (CAPM):</p>
-        <p>$$\displaystyle E[R_i] = R_f + \beta_i\,(E[R_m]-R_f)$$</p>
-        <p class="fragment">Leverage Ratio: $$\;\; LR = \frac{Tier\,1\,Capital}{Total\,Exposure}$$</p>
-        <aside class="notes">
-          Explain how assumptions for r, beta, and cash flows affect valuation and risk.
-        </aside>
-      </section>
+  <h2>Financial Formulas</h2>
+  <p>Net Present Value (discrete):</p>
+  <p><span class="math">\(NPV = \sum_{t=1}^{T} \frac{CF_t}{(1+r)^t} - C_0\)</span></p>
+
+  <p>Capital Asset Pricing Model (CAPM):</p>
+  <p><span class="math">\(E[R_i] = R_f + \beta_i\,(E[R_m]-R_f)\)</span></p>
+
+  <p class="fragment">Leverage Ratio: 
+    <span class="math">\(LR = \frac{Tier\,1\,Capital}{Total\,Exposure}\)</span>
+  </p>
+
+  <aside class="notes">
+    Explain how assumptions for r, beta, and cash flows affect valuation and risk.
+  </aside>
+</section>
+
 
       <!-- Guidance slide with fragments -->
       <section>
